@@ -3,7 +3,7 @@ import {
   ShoppingCart, Star, Clock, CheckCircle, ShieldCheck, ArrowRight, 
   ChevronRight, Zap, Award, ThumbsUp, Globe, 
   TrendingUp, Sparkles, Wind, Truck, RefreshCw, Lock,
-  Menu, X, Thermometer, Shield, Heart, Eye
+  Menu, X, Thermometer, Shield, Heart, Eye, Check
 } from 'lucide-react';
 
 /**
@@ -11,12 +11,13 @@ import {
  */
 const AFFILIATE_LINK = "https://s.click.aliexpress.com/e/_c37Wdocf";
 
+// תמונות המוצר המקוריות
 const IMG_MAIN = "https://ae01.alicdn.com/kf/Sd0ba310075a142a4a1f99219c97503b5V.jpg";
 const IMG_SET = "https://ae01.alicdn.com/kf/S7a583b86b11b456f8aa3f61753ce287fK.jpg";
 const IMG_CURLING = "https://ae01.alicdn.com/kf/S1441d65af7494dca8fe950546d24d9b77.jpg";
 const IMG_SPECS = "https://ae01.alicdn.com/kf/S59cd984664ee4334aa2c7b643ebaa840a.png";
 
-// תמונות ביקורות לקוחות שעברו אופטימיזציה
+// תמונות ביקורות לקוחות מהקישורים שסיפקת
 const REVIEW_IMAGES = [
   "https://ae-pic-a1.aliexpress-media.com/kf/A4269268740404e75b4a98a509b5aaeeer.jpg_640x640.jpg",
   "https://ae-pic-a1.aliexpress-media.com/kf/A125c2f735e0f43a3b468e2718dc5c121d.jpg_640x640.jpg",
@@ -28,9 +29,6 @@ const REVIEW_IMAGES = [
   "https://ae-pic-a1.aliexpress-media.com/kf/A73e565989d5046aeafe7a471afa8ef1bZ.jpg_640x640.jpg"
 ];
 
-/**
- * רכיב תמונה בטוח למניעת שגיאות טעינה
- */
 const SafeImage = ({ src, alt, className }) => {
   const [error, setError] = useState(false);
   return (
@@ -44,14 +42,10 @@ const SafeImage = ({ src, alt, className }) => {
   );
 };
 
-/**
- * אפליקציית דף הנחיתה המרכזית
- */
 const App = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
 
-  // האזנה לגלילה עבור אפקטים ב-Header
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
@@ -61,29 +55,29 @@ const App = () => {
   return (
     <div className="bg-white text-slate-900 font-sans selection:bg-orange-100 selection:text-orange-900 overflow-x-hidden text-left" dir="ltr">
       
-      {/* --- פס הודעות עליון --- */}
+      {/* --- Announcement Bar --- */}
       <div className="bg-slate-900 text-white py-2.5 px-4 text-[10px] md:text-xs font-bold uppercase tracking-[0.25em] text-center z-[60] relative">
-        ✨ 42% Flash Sale + Free Express Shipping to USA & Europe ✨
+        ✨ 191 REVIEWS | 800+ SOLD | FREE EXPRESS SHIPPING ✨
       </div>
 
-      {/* --- ניווט (Header) --- */}
+      {/* --- Header --- */}
       <header className={`fixed top-10 left-0 w-full z-50 transition-all duration-300 px-4 md:px-8`}>
-        <div className={`max-w-7xl mx-auto flex justify-between items-center rounded-2xl px-6 py-4 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-xl shadow-xl border border-slate-200' : 'bg-transparent'}`}>
+        <div className={`max-w-7xl mx-auto flex justify-between items-center rounded-2xl px-6 py-4 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-xl shadow-xl border border-slate-200' : 'bg-white/50 backdrop-blur-md border border-white/20'}`}>
           <div className="text-2xl font-black tracking-tighter italic flex items-center gap-2">
             <Sparkles className="text-orange-500" />
-            <span className="text-slate-900">PRO<span className="text-orange-500">STYLER</span></span>
+            <span className="text-slate-950">PRO<span className="text-orange-500">STYLER</span></span>
           </div>
           
           <nav className="hidden lg:flex gap-10 text-[10px] font-black uppercase tracking-widest text-slate-500">
-            <a href="#results" className="hover:text-orange-500 transition-colors">Results</a>
-            <a href="#technology" className="hover:text-orange-500 transition-colors">Technology</a>
+            <a href="#results" className="hover:text-orange-500 transition-colors">Real Results</a>
+            <a href="#technology" className="hover:text-orange-500 transition-colors">The Tech</a>
             <a href="#comparison" className="hover:text-orange-500 transition-colors">Compare</a>
             <a href="#reviews" className="hover:text-orange-500 transition-colors">Reviews</a>
           </nav>
 
           <div className="flex items-center gap-4">
-            <a href={AFFILIATE_LINK} target="_blank" className="hidden md:block bg-orange-500 text-white px-7 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-900 transition-all shadow-lg hover:shadow-orange-200">
-              Claim Discount
+            <a href={AFFILIATE_LINK} target="_blank" className="hidden sm:block bg-slate-950 text-white px-7 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-orange-500 transition-all shadow-lg">
+              Check Price
             </a>
             <button className="lg:hidden p-2" onClick={() => setMobileMenu(!mobileMenu)}>
               {mobileMenu ? <X size={24} /> : <Menu size={24} />}
@@ -92,7 +86,7 @@ const App = () => {
         </div>
       </header>
 
-      {/* --- תפריט מובייל --- */}
+      {/* --- Mobile Menu --- */}
       {mobileMenu && (
         <div className="fixed inset-0 z-[100] bg-white p-8 flex flex-col gap-8 text-xl font-black uppercase tracking-tighter">
            <div className="flex justify-between items-center">
@@ -100,9 +94,9 @@ const App = () => {
              <button onClick={() => setMobileMenu(false)}><X size={32}/></button>
            </div>
            <a href="#results" onClick={() => setMobileMenu(false)}>Gallery</a>
-           <a href="#technology" onClick={() => setMobileMenu(false)}>Tech Specs</a>
-           <a href="#comparison" onClick={() => setMobileMenu(false)}>The Deal</a>
-           <a href={AFFILIATE_LINK} className="bg-orange-500 text-white p-6 rounded-2xl text-center mt-auto shadow-xl shadow-orange-200">Shop Now on AliExpress</a>
+           <a href="#technology" onClick={() => setMobileMenu(false)}>Specifications</a>
+           <a href="#comparison" onClick={() => setMobileMenu(false)}>Savings</a>
+           <a href={AFFILIATE_LINK} className="bg-orange-500 text-white p-6 rounded-2xl text-center mt-auto shadow-xl">Shop Now</a>
         </div>
       )}
 
@@ -111,31 +105,31 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div className="z-10 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 bg-white border border-slate-200 px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm">
-              <TrendingUp className="text-orange-500" size={14} /> Pinterest's Most Wanted Styler
+              <TrendingUp className="text-orange-500" size={14} /> Pinterest's Top Rated Dupe
             </div>
             <h1 className="text-6xl md:text-[90px] font-black mb-10 leading-[0.85] tracking-tighter text-slate-950 uppercase italic">
-              Perfect Hair. <br/><span className="text-orange-500">Fast Air.</span>
+              Salon Style. <br/><span className="text-orange-500">Factory Price.</span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-500 mb-12 leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium">
-              Professional 100,000 RPM high-speed motor. The 7-head professional kit that stylizes with airflow, not extreme heat.
+            <p className="text-xl md:text-2xl text-slate-500 mb-12 leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium italic">
+              Stop paying for the logo. Get 100,000 RPM Brushless power and 7 professional heads for under $90.
             </p>
             <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start items-center">
-              <a href={AFFILIATE_LINK} target="_blank" className="w-full sm:w-auto bg-slate-900 text-white text-2xl font-black py-7 px-14 rounded-3xl flex items-center justify-center gap-4 hover:bg-orange-500 shadow-2xl transition-all transform hover:-translate-y-2">
-                Get Yours - $89.64 <ArrowRight size={32} />
+              <a href={AFFILIATE_LINK} target="_blank" className="w-full sm:w-auto bg-slate-950 text-white text-2xl font-black py-7 px-14 rounded-3xl flex items-center justify-center gap-4 hover:bg-orange-500 shadow-2xl transition-all transform hover:-translate-y-2">
+                Order Direct - $89.64 <ArrowRight size={32} />
               </a>
               <div className="flex items-center gap-4 opacity-70">
                  <div className="flex -space-x-3">
-                    {[1,2,3,4].map(i => <div key={i} className="w-11 h-11 rounded-full border-4 border-slate-50 bg-slate-300 shadow-sm" />)}
+                    {[1,2,3,4].map(i => <div key={i} className="w-11 h-11 rounded-full border-4 border-slate-50 bg-slate-300" />)}
                  </div>
-                 <span className="text-xs font-black uppercase tracking-widest text-slate-400">Trusted by 10k+</span>
+                 <span className="text-xs font-black uppercase tracking-widest text-slate-400">191+ Verified Buyers</span>
               </div>
             </div>
           </div>
           <div className="relative">
              <div className="absolute -inset-24 bg-orange-400 rounded-full blur-[180px] opacity-15 animate-pulse"></div>
-             <SafeImage src={IMG_MAIN} alt="7-in-1 Professional Hair Styler" className="relative z-10 w-full h-auto rounded-[4rem] shadow-[0_60px_120px_-20px_rgba(0,0,0,0.2)]" />
+             <SafeImage src={IMG_MAIN} alt="7-in-1 Professional Hair Styler" className="relative z-10 w-full h-auto rounded-[4rem] shadow-2xl" />
              <div className="absolute -bottom-8 -left-8 bg-white p-8 rounded-[3rem] shadow-2xl border border-slate-100 z-20 hidden md:block">
-                <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest leading-none mb-2 italic">Official Deal</p>
+                <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest leading-none mb-2">Deal of the Day</p>
                 <div className="flex items-end gap-2">
                   <p className="text-orange-600 font-black text-5xl leading-none">$89.64</p>
                   <p className="text-slate-300 line-through text-lg font-bold mb-1">$149</p>
@@ -148,38 +142,38 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- גלריית תוצאות אמת --- */}
+      {/* --- גלריית תוצאות (Social Proof) --- */}
       <section id="results" className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mb-20">
-            <h2 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter uppercase italic leading-none text-slate-950">Proven by the <br/>Community.</h2>
-            <p className="text-slate-500 text-xl font-medium">Real photos from real users. Experience the power of 100,000 RPM performance in everyday life.</p>
+            <h2 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter uppercase italic leading-none text-slate-950">Real Results. <br/>Real People.</h2>
+            <p className="text-slate-500 text-xl font-medium italic">Our community shared their unboxing and styling photos. High-end results without the luxury tax.</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {REVIEW_IMAGES.map((url, i) => (
               <div key={i} className="group relative overflow-hidden rounded-[2.5rem] aspect-[4/5] bg-slate-100 shadow-lg border border-slate-100">
-                <SafeImage src={url} alt={`Real Customer Review Photo ${i+1}`} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <SafeImage src={url} alt={`Customer Result ${i+1}`} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* --- סעיף טכנולוגיה --- */}
+      {/* --- מפרט טכני (התאמה לתמונות החדשות) --- */}
       <section id="technology" className="py-32 bg-slate-950 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-24 items-center">
             <div>
               <div className="inline-block bg-orange-500/10 text-orange-500 border border-orange-500/20 px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-8">
-                Masterpiece Engineering
+                Official Specifications
               </div>
-              <h2 className="text-5xl md:text-[80px] font-black mb-12 leading-[0.9] tracking-tighter uppercase italic">Fast. Cold. <br/>Controlled.</h2>
-              <div className="space-y-12 mb-16">
+              <h2 className="text-5xl md:text-[80px] font-black mb-12 leading-[0.9] tracking-tighter uppercase italic">Engineered <br/>Performance.</h2>
+              <div className="space-y-10 mb-16">
                  {[
-                   { icon: <Zap />, t: "100,000 RPM BRUSHLESS", d: "High-speed digital motor creates powerful airflow for lightning-fast drying." },
-                   { icon: <Thermometer />, t: "SMART HEAT CONTROL", d: "3 Temp settings (55°C / 75°C / 130°C) with intelligent sensors to prevent damage." },
-                   { icon: <Wind />, t: "COANDA AIR-CURLING", d: "Aerodynamic technology that draws hair to the barrel and wraps it automatically." }
+                   { icon: <Zap />, t: "100,000 RPM MOTOR", d: "High-speed brushless motor provides ultra-fast drying and styling power." },
+                   { icon: <Thermometer />, t: "3 HEAT SETTINGS", d: "Intelligent control at 55°C (Low), 75°C (Mid), and 130°C (High) for all hair types." },
+                   { icon: <Wind />, t: "1400W TOTAL POWER", d: "Powerful airflow that creates the Coanda effect for automatic curling." }
                  ].map((item, i) => (
                    <div key={i} className="flex gap-8 items-start group">
                      <div className="bg-orange-500 p-5 rounded-3xl text-white shadow-3xl shadow-orange-500/30 group-hover:scale-110 transition-transform shrink-0">
@@ -195,33 +189,33 @@ const App = () => {
             </div>
             <div className="relative">
                <div className="absolute -inset-20 bg-orange-500/20 blur-[120px] rounded-full"></div>
-               <SafeImage src={IMG_SPECS} alt="Technical Specs Breakdown" className="relative z-10 w-full rounded-[3.5rem] shadow-3xl border border-white/5" />
+               <SafeImage src={IMG_SPECS} alt="Technical Specs Chart" className="relative z-10 w-full rounded-[3.5rem] shadow-3xl border border-white/5" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- טבלת השוואת מחירים --- */}
+      {/* --- טבלת השוואה --- */}
       <section id="comparison" className="py-32 bg-white">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-5xl md:text-8xl font-black mb-20 tracking-tighter uppercase italic leading-none">Smart Money <br/>Buy Tech.</h2>
-          <div className="grid md:grid-cols-2 gap-0 border-[14px] border-slate-900 rounded-[4rem] overflow-hidden shadow-3xl">
+          <h2 className="text-5xl md:text-[100px] font-black mb-20 tracking-tighter uppercase italic leading-none">Why Pay <br/>The Brand Tax?</h2>
+          <div className="grid md:grid-cols-2 gap-0 border-[14px] border-slate-950 rounded-[4rem] overflow-hidden shadow-3xl">
             <div className="p-16 bg-slate-50 border-r border-slate-900/10 flex flex-col justify-center">
-              <h3 className="text-xl font-black mb-10 uppercase tracking-widest text-slate-400 italic">Luxury Brands</h3>
+              <h3 className="text-xl font-black mb-10 uppercase tracking-widest text-slate-400 italic">The "Leading" Brand</h3>
               <ul className="space-y-6 mb-12 opacity-40 font-bold">
                 <li className="flex justify-between border-b border-slate-200 pb-2"><span>100k RPM Motor</span> <span>Included</span></li>
                 <li className="flex justify-between border-b border-slate-200 pb-2"><span>7 Attachments</span> <span>Included</span></li>
-                <li className="flex justify-between border-b border-slate-200 pb-2"><span>Brand Tax</span> <span>+$500.00</span></li>
+                <li className="flex justify-between border-b border-slate-200 pb-2"><span>Brand Surcharge</span> <span>+$500.00</span></li>
               </ul>
               <div className="text-4xl font-black text-slate-400 line-through tracking-tighter">$599.00</div>
             </div>
             <div className="p-16 bg-orange-500 text-white relative flex flex-col justify-center overflow-hidden">
-              <div className="absolute top-8 right-8 bg-white text-orange-600 px-5 py-2 rounded-full text-[11px] font-black uppercase tracking-widest shadow-2xl animate-bounce">Pinterest Choice</div>
+              <div className="absolute top-8 right-8 bg-white text-orange-600 px-5 py-2 rounded-full text-[11px] font-black uppercase tracking-widest shadow-2xl animate-bounce">Smartest Choice</div>
               <h3 className="text-xl font-black mb-10 uppercase tracking-widest italic text-orange-100">Our 7-in-1 Kit</h3>
               <ul className="space-y-6 mb-12 font-bold text-lg">
                 <li className="flex justify-between border-b border-white/20 pb-2"><span>Advanced Motor</span> <span>Included</span></li>
                 <li className="flex justify-between border-b border-white/20 pb-2"><span>Full 7pc Set</span> <span>Included</span></li>
-                <li className="flex justify-between border-b border-white/20 pb-2"><span>Direct Price</span> <span>$89.64</span></li>
+                <li className="flex justify-between border-b border-white/20 pb-2"><span>Direct Factory Price</span> <span>$89.64</span></li>
               </ul>
               <div className="text-7xl md:text-8xl font-black tracking-tighter drop-shadow-2xl italic leading-none">$89.64</div>
             </div>
@@ -229,32 +223,32 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- סיום וקריאה לפעולה --- */}
+      {/* --- ביקורות וקריאה לפעולה --- */}
       <section id="reviews" className="py-32 bg-slate-50 text-center">
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex justify-center gap-1 text-yellow-400 mb-10">
             {[1,2,3,4,5].map(i => <Star key={i} fill="currentColor" size={40} />)}
           </div>
-          <h2 className="text-5xl md:text-[90px] font-black mb-16 tracking-tighter uppercase italic leading-none">Ready for a <br/>New Routine?</h2>
+          <h2 className="text-5xl md:text-[90px] font-black mb-16 tracking-tighter uppercase italic leading-none">191+ Reviews <br/>Can't Be Wrong.</h2>
           
           <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[4rem] text-left shadow-3xl relative overflow-hidden mb-24">
              <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/20 blur-[100px] -z-0"></div>
              <p className="text-2xl md:text-3xl text-white leading-tight font-medium relative z-10 mb-12 italic tracking-tight">
-               "This styler is an absolute beast. The airflow strength and temperature control are exactly like the high-end brands. For under $90, it's honestly the best tech purchase I've made in years."
+               "This dryer is an absolute beast. The airflow strength and temperature control are exactly like the high-end brands. For under $90, it's honestly the best tech purchase I've made in years."
              </p>
              <div className="flex items-center justify-between relative z-10">
                 <div className="flex items-center gap-6">
-                  <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center font-black text-white text-2xl italic shadow-lg">AS</div>
+                  <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center font-black text-white text-2xl italic shadow-lg uppercase">AS</div>
                   <div>
                     <p className="font-black text-xl italic uppercase tracking-tighter text-white">Verified Pinterest Shopper</p>
-                    <p className="text-xs text-slate-500 font-black uppercase tracking-[0.2em] mt-1">USA & UK Market Verified • 2024</p>
+                    <p className="text-xs text-slate-500 font-black uppercase tracking-[0.2em] mt-1">Verified Purchase • 2024</p>
                   </div>
                 </div>
              </div>
           </div>
           
-          <a href={AFFILIATE_LINK} target="_blank" className="bg-orange-500 text-white px-20 py-10 rounded-[2.5rem] font-black text-4xl hover:bg-slate-900 shadow-3xl shadow-orange-200 transition-all transform hover:scale-105 inline-block uppercase italic tracking-tighter">
-             GET THE DEAL - $89.64
+          <a href={AFFILIATE_LINK} target="_blank" className="bg-slate-950 text-white px-20 py-10 rounded-[2.5rem] font-black text-4xl hover:bg-orange-500 shadow-3xl transition-all transform hover:scale-105 inline-block uppercase italic tracking-tighter">
+             BUY AT $89.64 <ArrowRight className="inline ml-4" size={40} />
           </a>
           
           <div className="mt-16 flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all">
@@ -265,7 +259,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- כותרת תחתונה --- */}
+      {/* --- Footer --- */}
       <footer className="bg-slate-950 text-white py-32 px-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-16">
           <div className="text-center md:text-left">
@@ -273,7 +267,7 @@ const App = () => {
               <Sparkles className="text-orange-500" />
               <span>PRO<span className="text-orange-500">STYLER</span></span>
             </div>
-            <p className="text-slate-500 font-medium text-lg max-w-sm leading-relaxed">Professional hair styling for everyone who values performance over labels.</p>
+            <p className="text-slate-500 font-medium text-lg max-w-sm leading-relaxed italic">Cut the middleman. Keep the quality. <br/>Professional styling for everyone.</p>
           </div>
           <div className="flex flex-col items-center md:items-end gap-6 text-[10px] font-black uppercase tracking-[0.5em] text-slate-700">
              <p>© 2024 PRO-STYLER HAIR SOLUTIONS. ALL RIGHTS RESERVED.</p>
@@ -283,8 +277,8 @@ const App = () => {
 
       {/* --- Sticky Mobile CTA --- */}
       <div className="lg:hidden fixed bottom-0 left-0 w-full p-4 bg-white/95 backdrop-blur-xl border-t border-slate-100 z-[100] shadow-3xl">
-        <a href={AFFILIATE_LINK} target="_blank" className="flex items-center justify-between bg-orange-500 text-white p-6 rounded-2xl font-black text-xl shadow-2xl shadow-orange-200 active:scale-95 transition-transform italic uppercase tracking-tighter">
-           <span>BUY NOW - $89.64</span>
+        <a href={AFFILIATE_LINK} target="_blank" className="flex items-center justify-between bg-orange-500 text-white p-6 rounded-2xl font-black text-xl shadow-2xl active:scale-95 transition-transform italic uppercase tracking-tighter">
+           <span>BUY AT $89.64</span>
            <ArrowRight size={28} />
         </a>
       </div>
