@@ -1,83 +1,304 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+import React, { useEffect, useState } from 'react';
+import { 
+  ShoppingCart, Star, Clock, CheckCircle, ShieldCheck, ArrowRight, 
+  ChevronRight, Zap, Award, ThumbsUp, Globe, 
+  TrendingUp, Sparkles, Wind, Truck, RefreshCw, Lock,
+  Camera, Package, PlayCircle
+} from 'lucide-react';
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+// Affiliate Link
+const AFFILIATE_LINK = "https://s.click.aliexpress.com/e/_c37Wdocf";
 
-<title>5 in 1 Hair Dryer Brush – Salon Hair at Home</title>
+// Product Images from provided materials
+const IMG_MAIN = "https://ae01.alicdn.com/kf/Sd0ba310075a142a4a1f99219c97503b5V.jpg";
+const IMG_SET = "https://ae01.alicdn.com/kf/S7a583b86b11b456f8aa3f61753ce287fK.jpg";
+const IMG_CURLING = "https://ae01.alicdn.com/kf/S1441d65af7494dca8fe950546d24d9b77.jpg";
+const IMG_SPECS = "https://ae01.alicdn.com/kf/S59cd984664ee4334aa2c7b643ebaa840a.png";
 
-<meta name="description" content="Discover the 5 in 1 hair dryer styling tool that lets you dry, curl and straighten your hair in minutes. Perfect for busy women.">
+// Review Images provided by user
+const REVIEW_IMAGES = [
+  "https://ae-pic-a1.aliexpress-media.com/kf/A4269268740404e75b4a98a509b5aaeeer.jpg_960x960q75.jpg_.avif",
+  "https://ae-pic-a1.aliexpress-media.com/kf/A125c2f735e0f43a3b468e2718dc5c121d.jpg_960x960q75.jpg_.avif",
+  "https://ae-pic-a1.aliexpress-media.com/kf/Aedfc1d8eb8ca4c5298c06200677b1e1cX.jpg_960x960q75.jpg_.avif",
+  "https://ae-pic-a1.aliexpress-media.com/kf/A6e4f1f4d00394abeb00bebdd6fe83f65D.jpg_960x960q75.jpg_.avif",
+  "https://ae-pic-a1.aliexpress-media.com/kf/A15a63ccb734b4955b443f6b2743c60996.jpg_960x960q75.jpg_.avif",
+  "https://ae-pic-a1.aliexpress-media.com/kf/A4d7be42005f849b6a48421759cbb194co.jpg_960x960q75.jpg_.avif"
+];
 
-<style>
+const App = () => {
+  const [scrolled, setScrolled] = useState(false);
 
-body{
-font-family: Arial;
-background:#f4f4f4;
-margin:0;
-padding:0;
-}
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-.container{
-max-width:900px;
-margin:auto;
-background:white;
-padding:30px;
-}
+  return (
+    <div className="bg-white text-slate-900 font-sans selection:bg-orange-100 selection:text-orange-900" dir="ltr">
+      {/* --- Header --- */}
+      <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-3' : 'bg-transparent py-6'}`}>
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          <div className="text-2xl font-black tracking-tighter italic flex items-center gap-2">
+            <Sparkles className="text-orange-500" />
+            <span>PRO<span className="text-orange-500">STYLER</span></span>
+          </div>
+          <div className="hidden md:flex gap-10 text-xs font-bold uppercase tracking-widest text-slate-400">
+            <a href="#results" className="hover:text-orange-500 transition-colors">Real Results</a>
+            <a href="#technology" className="hover:text-orange-500 transition-colors">Technology</a>
+            <a href="#reviews" className="hover:text-orange-500 transition-colors">Reviews</a>
+          </div>
+          <a href={AFFILIATE_LINK} target="_blank" className="bg-slate-900 text-white px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest hover:bg-orange-600 transition-all shadow-lg hover:shadow-orange-200">
+            Shop 42% Off
+          </a>
+        </div>
+      </header>
 
-h1{
-font-size:34px;
-}
+      {/* --- Hero Section --- */}
+      <section className="relative pt-40 pb-24 overflow-hidden bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+          <div className="z-10 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-8">
+              <TrendingUp size={14} /> Viral Pinterest Discovery 2024
+            </div>
+            <h1 className="text-6xl md:text-8xl font-black mb-8 leading-[0.85] tracking-tighter text-slate-950">
+              Salon Hair. <br/><span className="text-orange-500">Zero Effort.</span>
+            </h1>
+            <p className="text-xl text-slate-500 mb-12 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Engineered with a 100,000 RPM high-speed brushless motor. Professional 7-in-1 styling that respects your hair's health.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
+              <a href={AFFILIATE_LINK} target="_blank" className="bg-orange-500 text-white text-2xl font-black py-6 px-12 rounded-2xl flex items-center justify-center gap-3 hover:bg-orange-600 shadow-2xl shadow-orange-200 transition-all transform hover:-translate-y-1">
+                Order Now - $89.64 <ArrowRight size={28} />
+              </a>
+            </div>
+            <div className="mt-8 flex items-center justify-center lg:justify-start gap-4">
+               <div className="flex -space-x-3">
+                  {[1,2,3,4,5].map(i => <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 shadow-sm" />)}
+               </div>
+               <span className="text-sm font-bold text-slate-400">Joined by 800+ happy stylists this month</span>
+            </div>
+          </div>
+          <div className="relative group">
+             <div className="absolute -inset-20 bg-orange-200 rounded-full blur-[150px] opacity-30 -z-10 group-hover:opacity-50 transition-opacity"></div>
+             <img src={IMG_MAIN} alt="Professional 7-in-1 Styler" className="w-full h-auto rounded-[4rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] transform transition-transform group-hover:scale-[1.02]" />
+             <div className="absolute bottom-10 right-10 bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 hidden md:block animate-bounce">
+                <p className="text-orange-500 font-black text-3xl leading-none">42% OFF</p>
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Limited Stock</p>
+             </div>
+          </div>
+        </div>
+      </section>
 
-.cta{
-display:inline-block;
-background:black;
-color:white;
-padding:15px 25px;
-text-decoration:none;
-font-size:20px;
-margin-top:20px;
-}
+      {/* --- Real Life Gallery (Social Proof) --- */}
+      <section id="results" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter">Real Results, Real Customers.</h2>
+            <p className="text-slate-500 text-xl max-w-2xl mx-auto">Don't take our word for it. See the 7-in-1 Pro Styler in the hands of our global community.</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            {REVIEW_IMAGES.map((url, i) => (
+              <div key={i} className="group relative overflow-hidden rounded-[2rem] aspect-square bg-slate-100 shadow-lg">
+                <img src={url} alt={`Customer Result ${i+1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                  <div className="text-white">
+                    <div className="flex gap-1 text-yellow-400 mb-2">
+                      <Star size={14} fill="currentColor" /><Star size={14} fill="currentColor" /><Star size={14} fill="currentColor" /><Star size={14} fill="currentColor" /><Star size={14} fill="currentColor" />
+                    </div>
+                    <p className="text-xs font-bold uppercase tracking-widest">Verified Purchase</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-img{
-max-width:100%;
-}
+      {/* --- Technology & Performance --- */}
+      <section id="technology" className="py-24 bg-slate-950 text-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <div className="order-2 lg:order-1">
+              <img src={IMG_SPECS} alt="Technical Specifications Chart" className="w-full rounded-[2.5rem] shadow-2xl border border-white/5" />
+            </div>
+            <div className="order-1 lg:order-2">
+              <h2 className="text-5xl font-black mb-8 leading-tight tracking-tighter uppercase underline decoration-orange-500 decoration-8 underline-offset-8">Precision <br/>Engineering.</h2>
+              <div className="space-y-8">
+                <div className="flex gap-6 items-start">
+                  <div className="bg-orange-500 p-3 rounded-2xl"><Zap size={24} className="text-white" /></div>
+                  <div>
+                    <h4 className="text-xl font-black mb-2 uppercase italic">100,000 RPM Brushless Motor</h4>
+                    <p className="text-slate-400 leading-relaxed">High-pressure airflow for instant drying. Brushless technology ensures longer life and quieter operation compared to AC/DC motors.</p>
+                  </div>
+                </div>
+                <div className="flex gap-6 items-start">
+                  <div className="bg-orange-500 p-3 rounded-2xl"><Wind size={24} className="text-white" /></div>
+                  <div>
+                    <h4 className="text-xl font-black mb-2 uppercase italic">Intelligent Heat Control</h4>
+                    <p className="text-slate-400 leading-relaxed">Thermostatically operated system prevents extreme heat damage. Choose from 55°C, 75°C, or 130°C to suit your hair type.</p>
+                  </div>
+                </div>
+                <div className="flex gap-6 items-start">
+                  <div className="bg-orange-500 p-3 rounded-2xl"><Sparkles size={24} className="text-white" /></div>
+                  <div>
+                    <h4 className="text-xl font-black mb-2 uppercase italic">Negative Ion Coating</h4>
+                    <p className="text-slate-400 leading-relaxed">Tourmaline ceramic material releases ions to neutralize static, sealing the cuticle for a smooth, high-shine finish.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-</style>
+      {/* --- What's in the Box --- */}
+      <section className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+           <div className="bg-slate-50 rounded-[4rem] p-12 md:p-20 shadow-inner border border-slate-100">
+             <div className="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                  <h2 className="text-4xl font-black mb-8 italic">The Complete <br/>7-in-1 Professional Kit.</h2>
+                  <ul className="grid grid-cols-1 gap-4 text-sm font-bold text-slate-600">
+                    <li className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm"><CheckCircle className="text-green-500" size={18}/> High-Speed Base Unit (1400W)</li>
+                    <li className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm"><CheckCircle className="text-green-500" size={18}/> Left & Right Auto-Curling Barrels</li>
+                    <li className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm"><CheckCircle className="text-green-500" size={18}/> Smoothing & Straightening Brush</li>
+                    <li className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm"><CheckCircle className="text-green-500" size={18}/> Volumizing Round Brush</li>
+                    <li className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm"><CheckCircle className="text-green-500" size={18}/> High-Efficiency Drying Nozzle</li>
+                    <li className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm"><CheckCircle className="text-green-500" size={18}/> Professional Hair Diffuser</li>
+                    <li className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm"><CheckCircle className="text-green-500" size={18}/> Heat-Resistant Safety Glove</li>
+                  </ul>
+                </div>
+                <div className="relative group">
+                   <img src={IMG_SET} alt="Full Hair Styler Set" className="w-full rounded-3xl shadow-2xl group-hover:scale-105 transition-transform duration-500" />
+                   <div className="absolute inset-0 bg-black/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </div>
+             </div>
+           </div>
+        </div>
+      </section>
 
-</head>
+      {/* --- Comparison Section --- */}
+      <section className="py-24 bg-white overflow-hidden">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-4xl md:text-6xl font-black mb-16 text-center tracking-tighter">Luxury Performance, <br/><span className="text-orange-500">Factory Pricing.</span></h2>
+          <div className="grid md:grid-cols-2 gap-0 border-[10px] border-slate-900 rounded-[3rem] overflow-hidden shadow-2xl">
+            <div className="p-12 bg-slate-50 border-r border-slate-900/10">
+              <h3 className="text-2xl font-black mb-8 uppercase tracking-widest text-slate-400 italic">High-End Brands</h3>
+              <ul className="space-y-6 mb-12 opacity-50 font-bold">
+                <li className="flex justify-between"><span>Base Technology</span> <span>$350</span></li>
+                <li className="flex justify-between"><span>7 Attachments</span> <span>$150</span></li>
+                <li className="flex justify-between"><span>Luxury Branding</span> <span>$100</span></li>
+              </ul>
+              <div className="text-3xl font-black text-slate-400 text-center line-through">Total: $600.00</div>
+            </div>
+            <div className="p-12 bg-orange-500 text-white relative">
+              <div className="absolute top-4 right-4 bg-white text-orange-600 px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest shadow-lg">Best Value</div>
+              <h3 className="text-2xl font-black mb-8 uppercase tracking-widest italic">Our Pro Styler</h3>
+              <ul className="space-y-6 mb-12 font-bold">
+                <li className="flex justify-between"><span>100k RPM Motor</span> <span>Included</span></li>
+                <li className="flex justify-between"><span>Full 7pc Kit</span> <span>Included</span></li>
+                <li className="flex justify-between"><span>Fast Shipping</span> <span>FREE</span></li>
+              </ul>
+              <div className="text-5xl font-black text-center animate-pulse tracking-tighter">Total: $89.64</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-<body>
+      {/* --- Reviews Section --- */}
+      <section id="reviews" className="py-24 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="flex justify-center gap-1 text-yellow-400 mb-6">
+            <Star fill="currentColor" size={32} /><Star fill="currentColor" size={32} /><Star fill="currentColor" size={32} /><Star fill="currentColor" size={32} /><Star fill="currentColor" size={32} />
+          </div>
+          <h2 className="text-5xl font-black mb-16 tracking-tighter uppercase">Verified Buyer Experience</h2>
+          
+          <div className="grid gap-12 text-left">
+            <div className="bg-white p-12 rounded-[3rem] shadow-xl relative border border-slate-100">
+               <p className="text-2xl text-slate-700 leading-relaxed italic mb-8 font-serif font-light">"The dryer arrived quickly, well packaged. The airflow strength and temperature are adjustable in three levels. It works perfectly, I hope it will last a long time. Highly recommended for the price!"</p>
+               <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center font-black text-orange-600 text-xl">A</div>
+                  <div>
+                    <p className="font-black text-lg">AliExpress Shopper</p>
+                    <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">Verified Purchase, European Union</p>
+                  </div>
+               </div>
+               <img src={REVIEW_IMAGES[2]} alt="Review Context" className="absolute -bottom-6 -right-6 w-32 h-32 rounded-3xl object-cover border-4 border-white shadow-2xl hidden md:block" />
+            </div>
+          </div>
 
-<div class="container">
+          <div className="mt-20">
+            <a href={AFFILIATE_LINK} target="_blank" className="bg-slate-900 text-white px-16 py-7 rounded-[2rem] font-black text-3xl hover:bg-orange-500 shadow-2xl transition-all transform hover:scale-105 inline-block">
+               GET YOURS FOR $89.64
+            </a>
+            <p className="mt-6 text-slate-400 font-bold uppercase tracking-widest text-xs">Safe Checkout via AliExpress Official Store</p>
+          </div>
+        </div>
+      </section>
 
-<h1>5 in 1 Hair Dryer Brush</h1>
+      {/* --- Footer --- */}
+      <footer className="bg-slate-950 text-white py-24 px-6 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-20 mb-20">
+            <div className="lg:col-span-2">
+              <div className="text-4xl font-black tracking-tighter italic mb-8 flex items-center gap-2">
+                <Sparkles className="text-orange-500" />
+                <span>PRO<span className="text-orange-500">STYLER</span></span>
+              </div>
+              <p className="text-slate-500 max-w-sm mb-10 leading-loose text-lg font-medium">Providing high-performance hair technology direct from the source. Cut the middleman, keep the quality.</p>
+              <div className="flex gap-10">
+                 <div className="flex flex-col gap-2">
+                    <span className="text-white font-black text-xl italic uppercase">100K</span>
+                    <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">RPM Motor Speed</span>
+                 </div>
+                 <div className="flex flex-col gap-2">
+                    <span className="text-white font-black text-xl italic uppercase">1.5K</span>
+                    <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Watts Power</span>
+                 </div>
+                 <div className="flex flex-col gap-2">
+                    <span className="text-white font-black text-xl italic uppercase">CE</span>
+                    <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Global Safety</span>
+                 </div>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-black uppercase tracking-widest text-xs mb-10 text-orange-500">Buyer Protection</h4>
+              <ul className="space-y-6 font-bold text-slate-400">
+                <li className="flex items-center gap-3"><Truck size={20} className="text-orange-500"/> Global Free Shipping</li>
+                <li className="flex items-center gap-3"><RefreshCw size={20} className="text-orange-500"/> 15-Day Free Returns</li>
+                <li className="flex items-center gap-3"><Lock size={20} className="text-orange-500"/> Secure Payment</li>
+                <li className="flex items-center gap-3"><Globe size={20} className="text-orange-500"/> US/EU/UK Plugs</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-black uppercase tracking-widest text-xs mb-10 text-orange-500">Explore</h4>
+              <ul className="space-y-6 font-bold text-slate-400">
+                <li><a href="#results" className="hover:text-white">Customer Results</a></li>
+                <li><a href="#technology" className="hover:text-white">Performance Data</a></li>
+                <li><a href="#reviews" className="hover:text-white">User Reviews</a></li>
+                <li><a href={AFFILIATE_LINK} className="hover:text-white">Shop Now</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+             <div className="flex gap-4">
+                <img src="https://ae01.alicdn.com/kf/Sa441bac68df94cac9264ca795c3ba58fL.jpg" alt="Logo Variant" className="h-6 opacity-20" />
+             </div>
+             <p className="text-[10px] font-bold text-slate-600 uppercase tracking-[0.3em]">© 2024 PRO-STYLER TECHNOLOGIES. ALL RIGHTS RESERVED.</p>
+          </div>
+        </div>
+      </footer>
 
-<p>
-Create salon-quality hair at home in just minutes.
-This powerful styling tool lets you dry, curl, straighten and add volume using one device.
-</p>
+      {/* --- Sticky Mobile CTA --- */}
+      <div className="md:hidden fixed bottom-0 left-0 w-full p-4 bg-white/95 backdrop-blur-md border-t border-slate-100 z-[60] shadow-[0_-10px_30px_rgba(0,0,0,0.1)]">
+        <a href={AFFILIATE_LINK} target="_blank" className="flex items-center justify-between bg-orange-500 text-white p-5 rounded-2xl font-black text-lg shadow-xl shadow-orange-200">
+           <span>BUY NOW - $89.64</span>
+           <ArrowRight />
+        </a>
+      </div>
+    </div>
+  );
+};
 
-<img src="YOUR_IMAGE.jpg">
-
-<h2>Why Women Love This Tool</h2>
-
-<ul>
-<li>Dry and style hair at the same time</li>
-<li>Perfect for busy mornings</li>
-<li>Lightweight and easy to use</li>
-<li>Multiple styling heads included</li>
-</ul>
-
-<a class="cta" href="YOUR_AFFILIATE_LINK" target="_blank">
-Check Price Now
-</a>
-
-<p style="margin-top:40px;font-size:12px;color:gray;">
-This page may contain affiliate links. If you purchase through these links we may earn a commission at no extra cost to you.
-</p>
-
-</div>
-
-</body>
-</html>
+export default App;
