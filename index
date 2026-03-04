@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ערכת עיצוב שיער 5-ב-1 – מבצע</title>
+  <meta name="description" content="ערכת עיצוב שיער 5-ב-1: ייבוש, סלסול, החלקה ונפח – בדקות. לחץ/י למבצע." />
+  <style>
+    :root { font-family: Arial, sans-serif; }
+    body { margin: 0; background:#f6f7f9; color:#111; }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 20px; }
+    .card { background:#fff; border-radius: 16px; padding: 18px; box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+    .top { display:grid; grid-template-columns: 1.2fr .8fr; gap: 18px; align-items:center; }
+    @media (max-width: 780px){ .top{ grid-template-columns: 1fr; } }
+    h1 { margin: 0 0 10px; font-size: 28px; line-height: 1.2; }
+    .sub { margin: 0 0 14px; color:#444; }
+    .badge { display:inline-block; padding:6px 10px; border-radius: 999px; background:#eef2ff; color:#2732ff; font-size: 13px; margin-bottom: 10px; }
+    .imgph { width: 100%; aspect-ratio: 4 / 3; border-radius: 14px; background: linear-gradient(135deg,#e9edf3,#f7f8fb); display:flex; align-items:center; justify-content:center; color:#666; }
+    .bullets { margin: 14px 0 0; padding: 0 18px 0 0; }
+    .bullets li { margin: 8px 0; }
+    .ctaRow { display:flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .btn { display:inline-block; text-decoration:none; padding: 12px 16px; border-radius: 12px; font-weight: 700; }
+    .btnPrimary { background:#111; color:#fff; }
+    .btnGhost { background:#fff; color:#111; border:1px solid #ddd; }
+    .fine { margin-top: 16px; font-size: 12px; color:#666; line-height: 1.4; }
+    .section { margin-top: 14px; }
+    .grid3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    @media (max-width: 780px){ .grid3{ grid-template-columns: 1fr; } }
+    .mini { background:#fafafa; border:1px solid #eee; border-radius: 14px; padding: 12px; }
+    .mini h3 { margin: 0 0 6px; font-size: 16px; }
+    .mini p { margin: 0; color:#444; }
+  </style>
+
+  <!-- OPTIONAL: simple click tracking (no cookies) -->
+  <script>
+    function trackClick(label){
+      try { console.log("CTA click:", label, new Date().toISOString()); } catch(e){}
+    }
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="top">
+        <div>
+          <div class="badge">מבצע מוגבל בזמן</div>
+          <h1>ערכת עיצוב שיער 5-ב-1 – ייבוש, סלסול, החלקה ונפח בדקות</h1>
+          <p class="sub">
+            פתרון מהיר לבית: כלי אחד שמחליף כמה מכשירים. מתאים למי שרוצה תוצאה “כמו מספרה” בלי להתאמץ.
+          </p>
+
+          <div class="ctaRow">
+            <!-- החלף את ה-# בקישור האפיליאייט שלך -->
+            <a class="btn btnPrimary" href="#" target="_blank" rel="nofollow noopener"
+               onclick="trackClick('primary');">לצפייה במבצע</a>
+
+            <a class="btn btnGhost" href="#faq">שאלות נפוצות</a>
+          </div>
+
+          <ul class="bullets">
+            <li>5 מצבים/ראשים – בהתאם לדגם</li>
+            <li>חוסך זמן בבוקר: ייבוש + עיצוב באותו תהליך</li>
+            <li>קל לשימוש גם למתחילים</li>
+          </ul>
+
+          <p class="fine">
+            גילוי נאות: ייתכן שחלק מהקישורים בעמוד הם קישורי אפיליאייט, כלומר אני עשוי לקבל עמלה אם מתבצעת רכישה—ללא תוספת מחיר עבורך.
+          </p>
+        </div>
+
+        <div class="imgph">
+          כאן תשים תמונת מוצר<br/> (אפשר גם להחליף לתמונה אמיתית)
+        </div>
+      </div>
+
+      <div class="section grid3">
+        <div class="mini">
+          <h3>למי זה מתאים?</h3>
+          <p>למי שרוצה תוצאה יפה ומהירה בבית: עבודה, לימודים, ילדים, שגרה עמוסה.</p>
+        </div>
+        <div class="mini">
+          <h3>מה מקבלים?</h3>
+          <p>כלי עיצוב + ראשים/אביזרים (לפי הדגם) לשימושים שונים.</p>
+        </div>
+        <div class="mini">
+          <h3>טיפ קצר</h3>
+          <p>עובד הכי טוב על שיער לח-מגבת + חלוקה לקווצות.</p>
+        </div>
+      </div>
+
+      <div class="section" id="faq">
+        <h2 style="margin:14px 0 8px;">שאלות נפוצות</h2>
+        <div class="mini" style="margin-bottom:10px;">
+          <h3>זה מתאים לכל סוג שיער?</h3>
+          <p>בדרך כלל כן, אבל מומלץ לבדוק במפרט הדגם (חום/הספק/ראשים) לפי הסוג שלך.</p>
+        </div>
+        <div class="mini" style="margin-bottom:10px;">
+          <h3>כמה זמן לוקח לעצב?</h3>
+          <p>זה משתנה לפי אורך ועובי, אבל לרוב מרגיש יותר מהיר כי זה משלב ייבוש ועיצוב.</p>
+        </div>
+        <div class="mini">
+          <h3>איך מזמינים?</h3>
+          <p>לוחצים על “לצפייה במבצע” וממשיכים לרכישה בעמוד החנות.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
