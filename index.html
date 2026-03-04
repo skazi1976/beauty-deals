@@ -65,7 +65,7 @@ const App = () => {
         <div className={`max-w-7xl mx-auto flex justify-between items-center rounded-2xl px-6 py-4 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-xl shadow-xl border border-slate-200' : 'bg-white/50 backdrop-blur-md border border-white/20'}`}>
           <div className="text-2xl font-black tracking-tighter italic flex items-center gap-2">
             <Sparkles className="text-orange-500" />
-            <span className="text-slate-950">PRO<span className="text-orange-500">STYLER</span></span>
+            <span className="text-slate-950 tracking-tight uppercase">Pro<span className="text-orange-500">Styler</span></span>
           </div>
           
           <nav className="hidden lg:flex gap-10 text-[10px] font-black uppercase tracking-widest text-slate-500">
@@ -76,7 +76,7 @@ const App = () => {
           </nav>
 
           <div className="flex items-center gap-4">
-            <a href={AFFILIATE_LINK} target="_blank" className="hidden sm:block bg-slate-950 text-white px-7 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-orange-500 transition-all shadow-lg">
+            <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer" className="hidden sm:block bg-slate-950 text-white px-7 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-orange-500 transition-all shadow-lg">
               Check Price
             </a>
             <button className="lg:hidden p-2" onClick={() => setMobileMenu(!mobileMenu)}>
@@ -96,12 +96,12 @@ const App = () => {
            <a href="#results" onClick={() => setMobileMenu(false)}>Gallery</a>
            <a href="#technology" onClick={() => setMobileMenu(false)}>Specifications</a>
            <a href="#comparison" onClick={() => setMobileMenu(false)}>Savings</a>
-           <a href={AFFILIATE_LINK} className="bg-orange-500 text-white p-6 rounded-2xl text-center mt-auto shadow-xl">Shop Now</a>
+           <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer" className="bg-orange-500 text-white p-6 rounded-2xl text-center mt-auto shadow-xl">Shop Now</a>
         </div>
       )}
 
       {/* --- Hero Section --- */}
-      <section className="relative pt-48 pb-24 md:pb-40 bg-slate-50 overflow-hidden">
+      <section className="relative pt-48 pb-24 md:pb-40 bg-slate-50 overflow-hidden text-left" dir="ltr">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div className="z-10 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 bg-white border border-slate-200 px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm">
@@ -114,7 +114,7 @@ const App = () => {
               Stop paying for the logo. Get 100,000 RPM Brushless power and 7 professional heads for under $90.
             </p>
             <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start items-center">
-              <a href={AFFILIATE_LINK} target="_blank" className="w-full sm:w-auto bg-slate-950 text-white text-2xl font-black py-7 px-14 rounded-3xl flex items-center justify-center gap-4 hover:bg-orange-500 shadow-2xl transition-all transform hover:-translate-y-2">
+              <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto bg-slate-950 text-white text-2xl font-black py-7 px-14 rounded-3xl flex items-center justify-center gap-4 hover:bg-orange-500 shadow-2xl transition-all transform hover:-translate-y-2">
                 Order Direct - $89.64 <ArrowRight size={32} />
               </a>
               <div className="flex items-center gap-4 opacity-70">
@@ -130,7 +130,7 @@ const App = () => {
              <SafeImage src={IMG_MAIN} alt="7-in-1 Professional Hair Styler" className="relative z-10 w-full h-auto rounded-[4rem] shadow-2xl" />
              <div className="absolute -bottom-8 -left-8 bg-white p-8 rounded-[3rem] shadow-2xl border border-slate-100 z-20 hidden md:block">
                 <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest leading-none mb-2">Deal of the Day</p>
-                <div className="flex items-end gap-2">
+                <div className="flex items-end gap-2 text-left">
                   <p className="text-orange-600 font-black text-5xl leading-none">$89.64</p>
                   <p className="text-slate-300 line-through text-lg font-bold mb-1">$149</p>
                 </div>
@@ -143,7 +143,7 @@ const App = () => {
       </section>
 
       {/* --- גלריית תוצאות (Social Proof) --- */}
-      <section id="results" className="py-32 bg-white">
+      <section id="results" className="py-32 bg-white text-left" dir="ltr">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mb-20">
             <h2 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter uppercase italic leading-none text-slate-950">Real Results. <br/>Real People.</h2>
@@ -160,8 +160,8 @@ const App = () => {
         </div>
       </section>
 
-      {/* --- מפרט טכני (התאמה לתמונות החדשות) --- */}
-      <section id="technology" className="py-32 bg-slate-950 text-white overflow-hidden">
+      {/* --- מפרט טכני --- */}
+      <section id="technology" className="py-32 bg-slate-950 text-white overflow-hidden text-left" dir="ltr">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-24 items-center">
             <div>
@@ -196,26 +196,26 @@ const App = () => {
       </section>
 
       {/* --- טבלת השוואה --- */}
-      <section id="comparison" className="py-32 bg-white">
+      <section id="comparison" className="py-32 bg-white text-left" dir="ltr">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-5xl md:text-[100px] font-black mb-20 tracking-tighter uppercase italic leading-none">Why Pay <br/>The Brand Tax?</h2>
+          <h2 className="text-5xl md:text-[100px] font-black mb-20 tracking-tighter uppercase italic leading-none text-slate-950">Why Pay <br/>The Brand Tax?</h2>
           <div className="grid md:grid-cols-2 gap-0 border-[14px] border-slate-950 rounded-[4rem] overflow-hidden shadow-3xl">
             <div className="p-16 bg-slate-50 border-r border-slate-900/10 flex flex-col justify-center">
               <h3 className="text-xl font-black mb-10 uppercase tracking-widest text-slate-400 italic">The "Leading" Brand</h3>
-              <ul className="space-y-6 mb-12 opacity-40 font-bold">
+              <ul className="space-y-6 mb-12 opacity-40 font-bold text-left">
                 <li className="flex justify-between border-b border-slate-200 pb-2"><span>100k RPM Motor</span> <span>Included</span></li>
                 <li className="flex justify-between border-b border-slate-200 pb-2"><span>7 Attachments</span> <span>Included</span></li>
-                <li className="flex justify-between border-b border-slate-200 pb-2"><span>Brand Surcharge</span> <span>+$500.00</span></li>
+                <li className="flex justify-between border-b border-slate-200 pb-2 text-red-500"><span>Brand Surcharge</span> <span>+$500.00</span></li>
               </ul>
               <div className="text-4xl font-black text-slate-400 line-through tracking-tighter">$599.00</div>
             </div>
             <div className="p-16 bg-orange-500 text-white relative flex flex-col justify-center overflow-hidden">
               <div className="absolute top-8 right-8 bg-white text-orange-600 px-5 py-2 rounded-full text-[11px] font-black uppercase tracking-widest shadow-2xl animate-bounce">Smartest Choice</div>
               <h3 className="text-xl font-black mb-10 uppercase tracking-widest italic text-orange-100">Our 7-in-1 Kit</h3>
-              <ul className="space-y-6 mb-12 font-bold text-lg">
+              <ul className="space-y-6 mb-12 font-bold text-lg text-left">
                 <li className="flex justify-between border-b border-white/20 pb-2"><span>Advanced Motor</span> <span>Included</span></li>
                 <li className="flex justify-between border-b border-white/20 pb-2"><span>Full 7pc Set</span> <span>Included</span></li>
-                <li className="flex justify-between border-b border-white/20 pb-2"><span>Direct Factory Price</span> <span>$89.64</span></li>
+                <li className="flex justify-between border-b border-white/20 pb-2 text-white/100"><span>Direct Factory Price</span> <span>$89.64</span></li>
               </ul>
               <div className="text-7xl md:text-8xl font-black tracking-tighter drop-shadow-2xl italic leading-none">$89.64</div>
             </div>
@@ -224,12 +224,12 @@ const App = () => {
       </section>
 
       {/* --- ביקורות וקריאה לפעולה --- */}
-      <section id="reviews" className="py-32 bg-slate-50 text-center">
+      <section id="reviews" className="py-32 bg-slate-50 text-center text-left" dir="ltr">
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex justify-center gap-1 text-yellow-400 mb-10">
             {[1,2,3,4,5].map(i => <Star key={i} fill="currentColor" size={40} />)}
           </div>
-          <h2 className="text-5xl md:text-[90px] font-black mb-16 tracking-tighter uppercase italic leading-none">191+ Reviews <br/>Can't Be Wrong.</h2>
+          <h2 className="text-5xl md:text-[90px] font-black mb-16 tracking-tighter uppercase italic leading-none text-slate-950">191+ Reviews <br/>Can't Be Wrong.</h2>
           
           <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[4rem] text-left shadow-3xl relative overflow-hidden mb-24">
              <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/20 blur-[100px] -z-0"></div>
@@ -247,7 +247,7 @@ const App = () => {
              </div>
           </div>
           
-          <a href={AFFILIATE_LINK} target="_blank" className="bg-slate-950 text-white px-20 py-10 rounded-[2.5rem] font-black text-4xl hover:bg-orange-500 shadow-3xl transition-all transform hover:scale-105 inline-block uppercase italic tracking-tighter">
+          <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer" className="bg-slate-950 text-white px-20 py-10 rounded-[2.5rem] font-black text-4xl hover:bg-orange-500 shadow-3xl transition-all transform hover:scale-105 inline-block uppercase italic tracking-tighter">
              BUY AT $89.64 <ArrowRight className="inline ml-4" size={40} />
           </a>
           
@@ -260,16 +260,20 @@ const App = () => {
       </section>
 
       {/* --- Footer --- */}
-      <footer className="bg-slate-950 text-white py-32 px-6 border-t border-white/5">
+      <footer className="bg-slate-950 text-white py-32 px-6 border-t border-white/5 text-left" dir="ltr">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-16">
           <div className="text-center md:text-left">
             <div className="text-4xl font-black tracking-tighter italic mb-6 flex items-center gap-3 justify-center md:justify-start">
               <Sparkles className="text-orange-500" />
-              <span>PRO<span className="text-orange-500">STYLER</span></span>
+              <span className="text-white uppercase tracking-tight">Pro<span className="text-orange-500">Styler</span></span>
             </div>
             <p className="text-slate-500 font-medium text-lg max-w-sm leading-relaxed italic">Cut the middleman. Keep the quality. <br/>Professional styling for everyone.</p>
           </div>
           <div className="flex flex-col items-center md:items-end gap-6 text-[10px] font-black uppercase tracking-[0.5em] text-slate-700">
+             <div className="flex gap-8 mb-4">
+               <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Order Now</a>
+               <a href="#results" className="hover:text-white transition-colors">Results</a>
+             </div>
              <p>© 2024 PRO-STYLER HAIR SOLUTIONS. ALL RIGHTS RESERVED.</p>
           </div>
         </div>
@@ -277,7 +281,7 @@ const App = () => {
 
       {/* --- Sticky Mobile CTA --- */}
       <div className="lg:hidden fixed bottom-0 left-0 w-full p-4 bg-white/95 backdrop-blur-xl border-t border-slate-100 z-[100] shadow-3xl">
-        <a href={AFFILIATE_LINK} target="_blank" className="flex items-center justify-between bg-orange-500 text-white p-6 rounded-2xl font-black text-xl shadow-2xl active:scale-95 transition-transform italic uppercase tracking-tighter">
+        <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-orange-500 text-white p-6 rounded-2xl font-black text-xl shadow-2xl active:scale-95 transition-transform italic uppercase tracking-tighter">
            <span>BUY AT $89.64</span>
            <ArrowRight size={28} />
         </a>
