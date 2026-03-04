@@ -51,7 +51,9 @@ const App = () => {
 
   // Monitor scroll for header animation
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -92,26 +94,29 @@ const App = () => {
 
       {/* --- Mobile Sidebar Menu --- */}
       {mobileMenu && (
-        <div className="fixed inset-0 z-[100] bg-white p-8 flex flex-col gap-8 text-xl font-black uppercase tracking-tighter">
+        <div className="fixed inset-0 z-[100] bg-white p-8 flex flex-col gap-8 text-xl font-black uppercase tracking-tighter shadow-2xl">
            <div className="flex justify-between items-center">
-             <span className="italic">Menu</span>
-             <button onClick={() => setMobileMenu(false)}><X size={32}/></button>
+             <span className="italic text-slate-400">Navigation</span>
+             <button onClick={() => setMobileMenu(false)} className="p-2 bg-slate-100 rounded-full"><X size={32}/></button>
            </div>
-           <a href="#results" onClick={() => setMobileMenu(false)}>Gallery</a>
-           <a href="#technology" onClick={() => setMobileMenu(false)}>Specifications</a>
-           <a href="#comparison" onClick={() => setMobileMenu(false)}>Savings</a>
-           <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer" className="bg-orange-500 text-white p-6 rounded-2xl text-center mt-auto shadow-xl">Shop Now</a>
+           <nav className="flex flex-col gap-6">
+             <a href="#results" onClick={() => setMobileMenu(false)}>Gallery</a>
+             <a href="#technology" onClick={() => setMobileMenu(false)}>Specifications</a>
+             <a href="#comparison" onClick={() => setMobileMenu(false)}>Savings</a>
+             <a href="#reviews" onClick={() => setMobileMenu(false)}>Reviews</a>
+           </nav>
+           <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer" className="bg-orange-500 text-white p-6 rounded-2xl text-center mt-auto shadow-xl shadow-orange-200">Shop Now</a>
         </div>
       )}
 
       {/* --- Hero Section --- */}
-      <section className="relative pt-48 pb-24 md:pb-40 bg-slate-50 overflow-hidden text-left" dir="ltr">
+      <section className="relative pt-48 pb-24 md:pb-40 bg-slate-50 overflow-hidden text-left">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div className="z-10 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 bg-white border border-slate-200 px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm">
               <TrendingUp className="text-orange-500" size={14} /> Pinterest's Top Rated Discovery
             </div>
-            <h1 className="text-6xl md:text-[90px] font-black mb-10 leading-[0.85] tracking-tighter text-slate-950 uppercase italic">
+            <h1 className="text-5xl md:text-[90px] font-black mb-10 leading-[0.85] tracking-tighter text-slate-950 uppercase italic">
               Salon Style. <br/><span className="text-orange-500">Factory Price.</span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-500 mb-12 leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium italic">
@@ -147,11 +152,11 @@ const App = () => {
       </section>
 
       {/* --- Real Results Gallery (Social Proof) --- */}
-      <section id="results" className="py-32 bg-white text-left" dir="ltr">
+      <section id="results" className="py-32 bg-white text-left">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mb-20">
             <h2 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter uppercase italic leading-none text-slate-950">Real Results. <br/>Real People.</h2>
-            <p className="text-slate-500 text-xl font-medium italic">Our community shared their unboxing and styling photos. High-end results without the luxury brand markup.</p>
+            <p className="text-slate-500 text-xl font-medium italic text-left">Our community shared their unboxing and styling photos. High-end results without the luxury brand markup.</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {REVIEW_IMAGES.map((url, i) => (
@@ -165,14 +170,14 @@ const App = () => {
       </section>
 
       {/* --- Technical Specs Section --- */}
-      <section id="technology" className="py-32 bg-slate-950 text-white overflow-hidden text-left" dir="ltr">
+      <section id="technology" className="py-32 bg-slate-950 text-white overflow-hidden text-left">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-24 items-center">
             <div>
               <div className="inline-block bg-orange-500/10 text-orange-500 border border-orange-500/20 px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-8">
                 Official Specifications
               </div>
-              <h2 className="text-5xl md:text-[80px] font-black mb-12 leading-[0.9] tracking-tighter uppercase italic">Engineered <br/>Power.</h2>
+              <h2 className="text-5xl md:text-[80px] font-black mb-12 leading-[0.9] tracking-tighter uppercase italic text-left">Engineered <br/>Power.</h2>
               <div className="space-y-10 mb-16">
                  {[
                    { icon: <Zap />, t: "100,000 RPM MOTOR", d: "High-speed brushless motor provides ultra-fast drying and styling airflow." },
@@ -183,7 +188,7 @@ const App = () => {
                      <div className="bg-orange-500 p-5 rounded-3xl text-white shadow-3xl shadow-orange-500/30 group-hover:scale-110 transition-transform shrink-0">
                         {item.icon}
                      </div>
-                     <div>
+                     <div className="text-left">
                        <h4 className="text-2xl font-black uppercase italic tracking-tight mb-2">{item.t}</h4>
                        <p className="text-slate-400 leading-relaxed font-medium">{item.d}</p>
                      </div>
@@ -200,13 +205,13 @@ const App = () => {
       </section>
 
       {/* --- Price Comparison Table --- */}
-      <section id="comparison" className="py-32 bg-white text-left" dir="ltr">
+      <section id="comparison" className="py-32 bg-white text-left">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-5xl md:text-[100px] font-black mb-20 tracking-tighter uppercase italic leading-none text-slate-950">Smart Money <br/>Buy Tech.</h2>
           <div className="grid md:grid-cols-2 gap-0 border-[14px] border-slate-950 rounded-[4rem] overflow-hidden shadow-3xl">
             <div className="p-16 bg-slate-50 border-r border-slate-900/10 flex flex-col justify-center text-left">
               <h3 className="text-xl font-black mb-10 uppercase tracking-widest text-slate-400 italic">Leading Brands</h3>
-              <ul className="space-y-6 mb-12 opacity-40 font-bold">
+              <ul className="space-y-6 mb-12 opacity-40 font-bold text-left">
                 <li className="flex justify-between border-b border-slate-200 pb-2"><span>100k RPM Motor</span> <span>Included</span></li>
                 <li className="flex justify-between border-b border-slate-200 pb-2"><span>7 Attachments</span> <span>Included</span></li>
                 <li className="flex justify-between border-b border-slate-200 pb-2 text-red-500"><span>Marketing Markup</span> <span>+$500.00</span></li>
@@ -215,8 +220,8 @@ const App = () => {
             </div>
             <div className="p-16 bg-orange-500 text-white relative flex flex-col justify-center overflow-hidden text-left">
               <div className="absolute top-8 right-8 bg-white text-orange-600 px-5 py-2 rounded-full text-[11px] font-black uppercase tracking-widest shadow-2xl animate-bounce">Smartest Choice</div>
-              <h3 className="text-xl font-black mb-10 uppercase tracking-widest italic text-orange-100">Pro Styler Kit</h3>
-              <ul className="space-y-6 mb-12 font-bold text-lg">
+              <h3 className="text-xl font-black mb-10 uppercase tracking-widest italic text-orange-100">Our 7-in-1 Kit</h3>
+              <ul className="space-y-6 mb-12 font-bold text-lg text-left">
                 <li className="flex justify-between border-b border-white/20 pb-2"><span>Advanced Motor</span> <span>Included</span></li>
                 <li className="flex justify-between border-b border-white/20 pb-2"><span>Full 7pc Set</span> <span>Included</span></li>
                 <li className="flex justify-between border-b border-white/20 pb-2 text-white/100"><span>Direct Factory Price</span> <span>$89.64</span></li>
@@ -228,7 +233,7 @@ const App = () => {
       </section>
 
       {/* --- Customer Reviews & Final CTA --- */}
-      <section id="reviews" className="py-32 bg-slate-50 text-center text-left" dir="ltr">
+      <section id="reviews" className="py-32 bg-slate-50 text-center text-left">
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex justify-center gap-1 text-yellow-400 mb-10">
             {[1,2,3,4,5].map(i => <Star key={i} fill="currentColor" size={40} />)}
@@ -237,39 +242,39 @@ const App = () => {
           
           <div className="bg-slate-900 text-white p-12 md:p-16 rounded-[4rem] text-left shadow-3xl relative overflow-hidden mb-24">
              <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/20 blur-[100px] -z-0"></div>
-             <p className="text-2xl md:text-3xl text-white leading-tight font-medium relative z-10 mb-12 italic tracking-tight">
+             <p className="text-2xl md:text-3xl text-white leading-tight font-medium relative z-10 mb-12 italic tracking-tight text-left">
                "This dryer is an absolute beast. The airflow strength and temperature control are exactly like the high-end brands. For under $90, it's honestly the best tech purchase I've made in years."
              </p>
-             <div className="flex items-center gap-6 relative z-10">
+             <div className="flex items-center gap-6 relative z-10 text-left">
                 <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center font-black text-white text-2xl italic shadow-lg uppercase">AS</div>
-                <div>
+                <div className="text-left">
                   <p className="font-black text-xl italic uppercase tracking-tighter text-white">Verified Pinterest Shopper</p>
                   <p className="text-xs text-slate-500 font-black uppercase tracking-[0.2em] mt-1">Verified Purchase • 2024</p>
                 </div>
              </div>
           </div>
           
-          <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer" className="bg-slate-950 text-white px-20 py-10 rounded-[2.5rem] font-black text-4xl hover:bg-orange-500 shadow-3xl transition-all transform hover:scale-105 inline-block uppercase italic tracking-tighter">
-             BUY AT $89.64 <ArrowRight className="inline ml-4" size={40} />
+          <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer" className="bg-slate-950 text-white px-10 md:px-20 py-8 md:py-10 rounded-[2.5rem] font-black text-2xl md:text-4xl hover:bg-orange-500 shadow-3xl transition-all transform hover:scale-105 inline-block uppercase italic tracking-tighter">
+             BUY AT $89.64 <ArrowRight className="inline ml-4 md:size-10" />
           </a>
           
-          <div className="mt-16 flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all">
-             <div className="flex items-center gap-3 font-black text-[11px] uppercase tracking-widest"><Truck size={20}/> Express Shipping</div>
-             <div className="flex items-center gap-3 font-black text-[11px] uppercase tracking-widest"><RefreshCw size={20}/> 15-Day Protection</div>
-             <div className="flex items-center gap-3 font-black text-[11px] uppercase tracking-widest"><Lock size={20}/> Secure Checkout</div>
+          <div className="mt-16 flex flex-wrap justify-center gap-6 md:gap-12 opacity-50 grayscale hover:grayscale-0 transition-all">
+             <div className="flex items-center gap-3 font-black text-[10px] md:text-[11px] uppercase tracking-widest"><Truck size={20}/> Express Shipping</div>
+             <div className="flex items-center gap-3 font-black text-[10px] md:text-[11px] uppercase tracking-widest"><RefreshCw size={20}/> 15-Day Return</div>
+             <div className="flex items-center gap-3 font-black text-[10px] md:text-[11px] uppercase tracking-widest"><Lock size={20}/> Secure Checkout</div>
           </div>
         </div>
       </section>
 
       {/* --- Footer --- */}
-      <footer className="bg-slate-950 text-white py-32 px-6 border-t border-white/5 text-left" dir="ltr">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-16">
-          <div className="text-center md:text-left">
-            <div className="text-4xl font-black tracking-tighter italic mb-6 flex items-center gap-3 justify-center md:justify-start">
+      <footer className="bg-slate-950 text-white py-32 px-6 border-t border-white/5 text-left">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-16 text-left">
+          <div className="text-center md:text-left flex flex-col items-center md:items-start">
+            <div className="text-4xl font-black tracking-tighter italic mb-6 flex items-center gap-3">
               <Sparkles className="text-orange-500" />
               <span className="text-white uppercase tracking-tight">Pro<span className="text-orange-500">Styler</span></span>
             </div>
-            <p className="text-slate-500 font-medium text-lg max-w-sm leading-relaxed italic">Cut the middleman. Keep the quality. <br/>Professional styling for everyone who values performance.</p>
+            <p className="text-slate-500 font-medium text-lg max-w-sm leading-relaxed italic text-center md:text-left">Cut the middleman. Keep the quality. <br/>Professional styling for everyone who values performance.</p>
           </div>
           <div className="flex flex-col items-center md:items-end gap-6 text-[10px] font-black uppercase tracking-[0.5em] text-slate-700">
              <div className="flex gap-8 mb-4">
@@ -283,7 +288,7 @@ const App = () => {
 
       {/* --- Sticky Mobile CTA --- */}
       <div className="lg:hidden fixed bottom-0 left-0 w-full p-4 bg-white/95 backdrop-blur-xl border-t border-slate-100 z-[100] shadow-3xl">
-        <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-orange-500 text-white p-6 rounded-2xl font-black text-xl shadow-2xl active:scale-95 transition-transform italic uppercase tracking-tighter">
+        <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-orange-500 text-white p-5 rounded-2xl font-black text-lg shadow-2xl active:scale-95 transition-transform italic uppercase tracking-tighter">
            <span>BUY AT $89.64</span>
            <ArrowRight size={28} />
         </a>
